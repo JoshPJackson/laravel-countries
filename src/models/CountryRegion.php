@@ -13,13 +13,6 @@ class CountryRegion extends Model
 
     public $translationModel = CountryRegionTranslation::class;
 
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'lc_regions';
-
     /* Mass Translatable Assignment */
     public $translatedAttributes = [
         'slug',
@@ -27,7 +20,7 @@ class CountryRegion extends Model
     ];
 
     /* Translatable ForeignKey */
-    public $translationForeignKey = 'lc_region_id';
+    public $translationForeignKey = 'region_id';
 
     /**
      * The attributes that are mass assignable.
@@ -51,7 +44,7 @@ class CountryRegion extends Model
      */
     public function countries()
     {
-        return $this->hasMany(Country::class, 'lc_region_id');
+        return $this->hasMany(Country::class, 'region_id');
     }
 
     /**

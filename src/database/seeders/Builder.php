@@ -88,7 +88,7 @@ class Builder
             }
 
             CountryRegionTranslation::create([
-                'lc_region_id' => $response->id,
+                'region_id' => $response->id,
                 'locale' => $lang,
                 'slug' => Str::slug($region, '-'),
                 'name' => Str::title(trim($region)),
@@ -114,7 +114,7 @@ class Builder
             }
 
             CountryTranslation::create([
-                'lc_country_id' => $response->id,
+                'country_id' => $response->id,
                 'locale' => $lang,
                 'slug' => Str::slug($country, '-'),
                 'name' => Str::title(trim($country)),

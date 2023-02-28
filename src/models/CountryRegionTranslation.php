@@ -17,13 +17,6 @@ class CountryRegionTranslation extends Model
     public $timestamps = false;
 
     /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'lc_region_translations';
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array

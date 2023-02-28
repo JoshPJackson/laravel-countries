@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLcCountriesTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateLcCountriesTranslationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lc_countries_translations', function (Blueprint $table) {
+        Schema::create('countries_translations', function (Blueprint $table) {
             $table->id('id');
-            $table->integer('lc_country_id')->unsigned();
+            $table->integer('country_id')->unsigned();
             $table->string('name');
             $table->string('slug');
             $table->string('locale')->index();
 
-            $table->unique(['lc_country_id', 'locale']);
-            $table->foreign('lc_country_id')->references('id')->on('lc_countries')->onDelete('cascade');
+            $table->unique(['country_id', 'locale']);
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
         });
     }
 
@@ -32,6 +32,6 @@ class CreateLcCountriesTranslationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lc_countries_translations');
+        Schema::dropIfExists('countries_translations');
     }
-}
+};

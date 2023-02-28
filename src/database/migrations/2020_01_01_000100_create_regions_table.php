@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLcRegionsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateLcRegionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lc_regions', function (Blueprint $table) {
+        Schema::create('regions', function (Blueprint $table) {
             $table->tinyIncrements('id');
             $table->uuid('uuid')->unique();
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateLcRegionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lc_regions');
+        Schema::dropIfExists('regions');
     }
-}
+};

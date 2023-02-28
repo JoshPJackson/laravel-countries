@@ -12,20 +12,13 @@ class CountryGeographical extends Model
     use HasFactory;
 
     /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'lc_countries_geographical';
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
         'uuid',
-        'lc_country_id',
+        'country_id',
         'type',
         'features_type',
         'properties',
@@ -55,7 +48,7 @@ class CountryGeographical extends Model
      */
     public function country()
     {
-        return $this->belongsTo(Country::class, 'lc_country_id');
+        return $this->belongsTo(Country::class, 'country_id');
     }
 
     /**

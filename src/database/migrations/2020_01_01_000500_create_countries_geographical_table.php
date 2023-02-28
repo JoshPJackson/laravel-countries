@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLcCountriesGeographicalTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateLcCountriesGeographicalTable extends Migration
      */
     public function up()
     {
-        Schema::create('lc_countries_geographical', function (Blueprint $table) {
+        Schema::create('countries_geographical', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
-            $table->integer('lc_country_id')->unsigned();
+            $table->integer('country_id')->unsigned();
             $table->string('type');
             $table->string('features_type');
             $table->json('properties');
             $table->json('geometry');
 
-            $table->foreign('lc_country_id')->references('id')->on('lc_countries')->onDelete('cascade');
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ class CreateLcCountriesGeographicalTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lc_countries_geographical');
+        Schema::dropIfExists('countries_geographical');
     }
-}
+};

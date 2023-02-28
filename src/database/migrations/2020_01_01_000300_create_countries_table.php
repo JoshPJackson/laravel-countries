@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLcCountriesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateLcCountriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('lc_countries', function (Blueprint $table) {
+        Schema::create('countries', function (Blueprint $table) {
             $table->increments('id');
-            $table->tinyInteger('lc_region_id')->unsigned();
+            $table->tinyInteger('region_id')->unsigned();
             $table->uuid('uuid')->unique();
             $table->string('official_name');
             $table->string('iso_alpha_2', 3);
@@ -38,8 +38,8 @@ class CreateLcCountriesTable extends Migration
             $table->boolean('visible')->default(true);
             $table->timestamps();
 
-            $table->unique(['lc_region_id', 'iso_alpha_2']);
-            $table->foreign('lc_region_id')->references('id')->on('lc_regions')->onDelete('cascade');
+            $table->unique(['region_id', 'iso_alpha_2']);
+            $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
         });
     }
 
@@ -50,6 +50,6 @@ class CreateLcCountriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lc_countries');
+        Schema::dropIfExists('countries');
     }
-}
+};

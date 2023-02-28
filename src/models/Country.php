@@ -14,13 +14,6 @@ class Country extends Model
 
     public $translationModel = CountryTranslation::class;
 
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'lc_countries';
-
     /* Mass Translatable Assignment */
     public $translatedAttributes = [
         'slug',
@@ -28,7 +21,7 @@ class Country extends Model
     ];
 
     /* Translatable ForeignKey */
-    public $translationForeignKey = 'lc_country_id';
+    public $translationForeignKey = 'country_id';
 
     /**
      * The attributes that are mass assignable.
@@ -37,7 +30,7 @@ class Country extends Model
      */
     protected $fillable = [
         'uuid',
-        'lc_region_id',
+        'region_id',
         'official_name',
         'iso_alpha_2',
         'iso_alpha_3',
@@ -96,7 +89,7 @@ class Country extends Model
      */
     public function region()
     {
-        return $this->belongsTo(CountryRegion::class, 'lc_region_id');
+        return $this->belongsTo(CountryRegion::class, 'region_id');
     }
 
     /**
@@ -104,7 +97,7 @@ class Country extends Model
      */
     public function geographical()
     {
-        return $this->hasMany(CountryGeographical::class, 'lc_country_id');
+        return $this->hasMany(CountryGeographical::class, 'country_id');
     }
 
     /**
