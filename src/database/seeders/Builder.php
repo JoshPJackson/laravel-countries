@@ -7,15 +7,15 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Lwwcas\LaravelCountries\Models\Country;
-use Lwwcas\LaravelCountries\Models\CountryRegion;
-use Lwwcas\LaravelCountries\Models\CountryRegionTranslation;
+use Lwwcas\LaravelCountries\Models\Region;
+use Lwwcas\LaravelCountries\Models\RegionTranslation;
 use Lwwcas\LaravelCountries\Models\CountryTranslation;
 
 class Builder
 {
     public static function country(Seeder $country): void
     {
-        $region = CountryRegion::whereSlug($country->region, $country->lang)
+        $region = Region::whereSlug($country->region, $country->lang)
             ->firstOrFail();
 
         $_country = $region->countries()->create([
@@ -62,7 +62,7 @@ class Builder
         ];
 
         foreach ($regions as $region) {
-            CountryRegion::create([
+            Region::create([
                 'en' => [
                     'slug' => Str::slug($region, '-'),
                     'name' => Str::title(trim($region)),
@@ -78,7 +78,7 @@ class Builder
         DB::beginTransaction();
 
         foreach ($regions as $slug => $region) {
-            $response = CountryRegion::whereTranslation('locale', 'en')
+            $response = Region::whereTranslation('locale', 'en')
                 ->whereTranslation('name', $slug)
                 ->first();
 
@@ -87,7 +87,7 @@ class Builder
                 throw new Exception('Region ' . $region . ' not found');
             }
 
-            CountryRegionTranslation::create([
+            RegionTranslation::create([
                 'region_id' => $response->id,
                 'locale' => $lang,
                 'slug' => Str::slug($region, '-'),

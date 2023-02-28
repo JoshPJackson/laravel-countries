@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class CountryRegion extends Model
+class Region extends Model
 {
     use HasFactory, Translatable;
 
-    public $translationModel = CountryRegionTranslation::class;
+    public $translationModel = RegionTranslation::class;
 
     /* Mass Translatable Assignment */
     public $translatedAttributes = [

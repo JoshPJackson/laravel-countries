@@ -5,7 +5,7 @@ namespace Lwwcas\LaravelCountries\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CountryRegionTranslation extends Model
+class RegionTranslation extends Model
 {
     use HasFactory;
 

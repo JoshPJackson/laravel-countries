@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Lwwcas\LaravelCountries\Casts\Json;
 
-class CountryGeographical extends Model
+class Geography extends Model
 {
     use HasFactory;
 

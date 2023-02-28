@@ -89,7 +89,7 @@ class Country extends Model
      */
     public function region()
     {
-        return $this->belongsTo(CountryRegion::class, 'region_id');
+        return $this->belongsTo(Region::class, 'region_id');
     }
 
     /**
@@ -97,7 +97,7 @@ class Country extends Model
      */
     public function geographical()
     {
-        return $this->hasMany(CountryGeographical::class, 'country_id');
+        return $this->hasMany(Geography::class, 'country_id');
     }
 
     /**
