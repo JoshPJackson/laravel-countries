@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('countries_geographical', function (Blueprint $table) {
+        Schema::create('geography', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
             $table->integer('country_id')->unsigned();
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('countries_geographical');
+        Schema::dropIfExists('geography');
     }
 };

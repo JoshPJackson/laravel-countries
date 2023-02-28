@@ -11,6 +11,8 @@ class Geography extends Model
 {
     use HasFactory;
 
+    protected $table = 'geographies';
+
     /**
      * The attributes that are mass assignable.
      *
