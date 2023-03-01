@@ -5,7 +5,7 @@ namespace Lwwcas\LaravelCountries\Database\Seeders\Countries;
 use Illuminate\Database\Seeder;
 use Lwwcas\LaravelCountries\Database\Seeders\Builder;
 
-class SaintLucia extends Seeder
+class LC_SaintLucia extends Seeder
 {
 
     /**
